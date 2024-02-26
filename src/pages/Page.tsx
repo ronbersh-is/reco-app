@@ -37,7 +37,7 @@ export const Page: React.FC = () => {
       const { totalCount, appRows } = await data;
       setLoading(true);
       setApps(appRows);
-      const rowsData = appRows.length ? appRows : [];
+      const rowsData = appRows?.length > 0 ? appRows : [];
       setRows(rowsData);
       setTotalApps(totalCount);
       console.log("data", appRows);
