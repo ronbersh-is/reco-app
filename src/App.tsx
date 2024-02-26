@@ -1,13 +1,13 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { User } from "./pages/user";
+import { Page } from "./pages/Page";
 
 function App() {
   return (
     <div className="App">
       <div className="App-main">
-        <User></User>
+        <Page />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export const User: React.FC = () => {
+export const Page: React.FC = () => {
   const [name, setName] = useState<string>("");
 
   useEffect(() => {
@@ -10,7 +10,7 @@ export const User: React.FC = () => {
   return (
     <>
       <div>
-        <h1>User : {name} </h1>
+        <h1>Page : {name} </h1>
       </div>
     </>
   );
