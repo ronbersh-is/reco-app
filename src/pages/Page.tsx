@@ -21,13 +21,13 @@ export const Page: React.FC = () => {
   const [pageSize, setPageSize] = useState<number>(50);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const getApps = async (currentPage: number, pageSizeNumber: number) => {
+  const getApps = async () => {
     try {
-      const getBody = {
-        pageNumber: currentPage,
-        pageSize: pageSizeNumber,
-      };
       setLoading(false);
+      const getBody = {
+        pageNumber: pageNumber,
+        pageSize: pageSize,
+      };
       console.log("body Data", getBody);
       const response = await fetch(appsUrl, {
         ...config,
@@ -48,22 +48,22 @@ export const Page: React.FC = () => {
   };
 
   useEffect(() => {
-    getApps(pageNumber, pageSize);
-  }, []);
+    getApps();
+  }, [pageNumber, pageSize]);
 
   const nextPage = (pageNumber: number): void => {
-    if (totalApps / pageSize > pageNumber) {
-      console.log("page number", pageNumber);
-      setPageNumber(pageNumber + 1);
-      getApps(pageNumber, pageSize);
+    const nextPageNumber = pageNumber + 1;
+    if (totalApps / pageSize >= nextPageNumber) {
+      console.log("page number", nextPageNumber);
+      setPageNumber(nextPageNumber);
     }
   };
 
   const prevPage = (pageNumber: number): void => {
-    if (pageNumber > 1) {
-      console.log("page number", pageNumber);
-      setPageNumber(pageNumber - 1);
-      getApps(pageNumber, pageSize);
+    const prevPageNumber = pageNumber - 1;
+    if (prevPageNumber >= 1) {
+      console.log("page number", prevPageNumber);
+      setPageNumber(prevPageNumber);
     }
   };
 
@@ -71,7 +71,6 @@ export const Page: React.FC = () => {
     const size = Number(event.target.value);
     console.log(" changePageSize size", size);
     setPageSize(size);
-    getApps(pageNumber, size);
   };
 
   return (
