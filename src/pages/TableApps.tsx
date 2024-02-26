@@ -20,8 +20,10 @@ export const TableApps: React.FC<TableAppsProps> = ({ appsData }) => {
           <tbody>
             {appsData.map((app: any, index: number) => {
               return (
-                <tr key={index}>
-                  <td>{app?.appName}</td>
+                <tr key={app.appId}>
+                  <td>
+                    {index + 1}. {app?.appName}
+                  </td>
                   <td>{app?.category}</td>
                   <td>
                     {app.appSources.length > 0 ? app.appSources.join(", ") : ""}

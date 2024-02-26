@@ -4,15 +4,7 @@ import { TableApps } from "./TableApps";
 import AppsModel from "./AppsModel";
 
 export const Page: React.FC = () => {
-  const [name, setName] = useState<string>("");
   const appsUrl = "/api/v1/app-service/get-apps";
-
-  //const data for req
-  // const body = {
-  //   pageNumber: 1,
-  //   pageSize: 50,
-  // };
-
   const config = {
     method: "PUT",
     headers: {
@@ -26,7 +18,7 @@ export const Page: React.FC = () => {
 
   const [totalApps, setTotalApps] = useState<number>(0);
   const [pageNumber, setPageNumber] = useState<number>(1);
-  const [pageSize, setPageSize] = useState<number>(25);
+  const [pageSize, setPageSize] = useState<number>(50);
   const [loading, setLoading] = useState<boolean>(false);
 
   const getApps = async (currentPage: number, pageSizeNumber: number) => {
@@ -76,9 +68,10 @@ export const Page: React.FC = () => {
   };
 
   const changePageSize = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log("page size", event.target.value);
-    setPageSize(Number(event.target.value));
-    //getApps(pageNumber, pageSizeNumber);
+    const size = Number(event.target.value);
+    console.log(" changePageSize size", size);
+    setPageSize(size);
+    getApps(pageNumber, size);
   };
 
   return (
