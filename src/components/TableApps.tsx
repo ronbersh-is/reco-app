@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import AppsModel from "./AppsModel";
+import AppsModel from "../model/AppsModel";
 
 interface TableAppsProps {
   appsData: AppsModel[];

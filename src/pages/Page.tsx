@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./apps.scss";
-import { TableApps } from "./TableApps";
-import AppsModel from "./AppsModel";
+import "../css/apps.scss";
+import { TableApps } from "../components/TableApps";
+import AppsModel from "../model/AppsModel";
 
 export const Page: React.FC = () => {
   const appsUrl = "/api/v1/app-service/get-apps";
